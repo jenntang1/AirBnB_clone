@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ FileStorage Implementation """
 import json
+import os
 
 
 class FileStorage:
@@ -12,14 +13,14 @@ class FileStorage:
         __objects: store all objects by <class name>.id that's
                    an empty dictionary
     """
-    __file_path
+    __file_path = "file.json"
     __objects
 
     def all(self):
         """ Creating public instance method that returns
         the dictionary __objects.
         """
-        return self.__dict__.__objects
+        return self.__objects
 
     def new(self, obj):
         """ Creating public instance method that sets in
@@ -31,12 +32,14 @@ class FileStorage:
         """ Creating public instance method that serializes
         __objects to the JSON file, __file_path.
         """
-        with open(__file_path, 'w') as save_json:
-            save_json.write(json.dumps(__objects))
+        temp_dict = dict(self.__objects)
+        for key, value in temp_dict.items():
+            with open(self.__file_path, 'w') as save_json:
+                json.dump(temp_dict, save_json)
 
     def reload(self):
         """ Creating public instance method that deserializes
         the JSON file to __objects.
         """
-        if __file_path is not None:
-            json.loads(__file_path)
+        if self.__file_path is not None:
+            json.load(self.__file_path)
