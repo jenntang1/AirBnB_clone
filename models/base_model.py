@@ -18,19 +18,17 @@ class BaseModel:
             created_at: current datetime
             updated_at: updated datetime
         """
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-
         if (len(kwargs) > 0) and (kwargs is not None):
-            self.__dict__ = kwargs
-            self.__dict__['created_at'] = datetime.strptime
-            (self.created_at, '%Y-%m-%dT%H:%M:%S.%f')
-            self.__dict__['updated_at'] = datetime.strptime
-            (self.updated_at, '%Y-%m-%dT%H:%M:%S.%f')
+            updater = self.__dict__
+            formater = '%Y-%m-%dT%H:%M:%S.%f'
+            updater.update(kwargs)
+            updater['created_at'] = datetime.strptime(self.created_at, formater)
+            updater['updated_at'] = datetime.strptime(self.updated_at, formater)
+            del updater['__class__']
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         """ Implementing __str__ method for string
