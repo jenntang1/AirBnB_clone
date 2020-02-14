@@ -2,7 +2,7 @@
 """ BaseModel Implementation """
 from uuid import uuid4
 from datetime import datetime
-from __init__ import storage
+from models import storage
 
 class BaseModel:
     """ Parent/Base class that defines all common/public
