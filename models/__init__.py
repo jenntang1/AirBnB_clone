@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-# Packaging facilitation
+# Packaging facilitation lol
+
 
 from models.engine.file_storage import FileStorage
 storage = FileStorage()
