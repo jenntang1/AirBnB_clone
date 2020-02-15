@@ -35,7 +35,9 @@ class FileStorage:
         """
         temp_dict = dict(FileStorage.__objects)
         with open(FileStorage.__file_path, 'w') as save_json:
-            json.dump(temp_dict, save_json)
+            instance = json.dump(temp_dict, save_json)
+            for key, value in instance.to_dict():
+                temp_dict[key] = value.to_dict()
 
     def reload(self):
         """ Creating public instance method that deserializes
