@@ -33,11 +33,12 @@ class FileStorage:
         """ Creating public instance method that serializes
         __objects to the JSON file, __file_path.
         """
-        temp_dict = dict(FileStorage.__objects)
+        tmp = {}
+        tmp.update(FileStorage.__objects)
+        for key, value in tmp.items():
+            tmp[key] = value.to_dict()
         with open(FileStorage.__file_path, 'w') as save_json:
-            instance = json.dump(temp_dict, save_json)
-            for key, value in instance.to_dict():
-                temp_dict[key] = value.to_dict()
+            json.dump(tmp, save_json)
 
     def reload(self):
         """ Creating public instance method that deserializes
@@ -49,4 +50,4 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r') as from_json:
                 instance = json.load(from_json)
                 for key, value in instance.items():
-                    FileStorage.__objects = BaseModel(**value)
+                    FileStorage.__objects[key] = BaseModel(**value)
