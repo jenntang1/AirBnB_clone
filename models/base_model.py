@@ -4,6 +4,7 @@ from uuid import uuid4
 from datetime import datetime
 from models import storage
 
+
 class BaseModel:
     """ Parent/Base class that defines all common/public
     attributes and methods for other classes.
@@ -19,12 +20,12 @@ class BaseModel:
             updated_at: updated datetime
         """
         if (len(kwargs) > 0) and (kwargs is not None):
-            updater = self.__dict__
-            formater = '%Y-%m-%dT%H:%M:%S.%f'
-            updater.update(kwargs)
-            updater['created_at'] = datetime.strptime(self.created_at, formater)
-            updater['updated_at'] = datetime.strptime(self.updated_at, formater)
-            del updater['__class__']
+            updt = self.__dict__
+            fmt = '%Y-%m-%dT%H:%M:%S.%f'
+            updt.update(kwargs)
+            updt['created_at'] = datetime.strptime(self.created_at, fmt)
+            updt['updated_at'] = datetime.strptime(self.updated_at, fmt)
+            del updt['__class__']
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
