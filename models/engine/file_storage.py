@@ -3,7 +3,6 @@
 import json
 from os import path
 
-
 class FileStorage:
     """ Creating a class to serialize instances to a JSON file
     and deserialize JSON file to instances.
@@ -15,10 +14,6 @@ class FileStorage:
     """
     __file_path = "file.json"
     __objects = {}
-    classes_json = {'BaseModel': BaseModel, 'User': User,
-                    'State': State, 'City': City,
-                    'Amenity': Amenity, 'Place': Place,
-                    'Review': Review}
 
     def all(self):
         """ Creating public instance method that returns
@@ -55,8 +50,13 @@ class FileStorage:
             from models.amenity import Amenity
             from models.place import Place
             from models.review import Review
+            classes = {'BaseModel': BaseModel, 'User': User,
+                       'State': State, 'City': City,
+                       'Amenity': Amenity, 'Place': Place,
+                       'Review': Review}
             instance = {}
             with open(FileStorage.__file_path, 'r') as from_json:
                 instance = json.load(from_json)
                 for key, value in instance.items():
-                    FileStorage.__objects[key] = BaseModel(**value)
+                    skey = key.split(".")
+                    FileStorage.__objects[key] = classes[skey[0]](**value)

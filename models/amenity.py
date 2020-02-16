@@ -9,4 +9,4 @@ class Amenity(BaseModel):
         ----------- public class attributes -----------
         name: empty string
     """
-    self.name = ""
+    name = ""

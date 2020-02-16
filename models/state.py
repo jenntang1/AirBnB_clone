@@ -9,4 +9,4 @@ class State(BaseModel):
         ----------- public class attributes -----------
         name: empty string
     """
-    self.name = ""
+    name = ""
