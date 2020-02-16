@@ -9,12 +9,16 @@ class FileStorage:
     and deserialize JSON file to instances.
     Attributes:
         -------------- private class attributes --------------
-        __file_path: path to the JSON file that's a string
-        __objects: store all objects by <class name>.id that's
-                   an empty dictionary
+        __file_path: string that's the path to the JSON file
+        __objects: empty dictionary but will store all objects
+                   by <class name>.id
     """
     __file_path = "file.json"
     __objects = {}
+    classes_json = {'BaseModel': BaseModel, 'User': User,
+                    'State': State, 'City': City,
+                    'Amenity': Amenity, 'Place': Place,
+                    'Review': Review}
 
     def all(self):
         """ Creating public instance method that returns
@@ -45,6 +49,12 @@ class FileStorage:
         """
         if path.exists(FileStorage.__file_path):
             from models.base_model import BaseModel
+            from models.user import User
+            from models.city import City
+            from models.state import State
+            from models.amenity import Amenity
+            from models.place import Place
+            from models.review import Review
             instance = {}
             with open(FileStorage.__file_path, 'r') as from_json:
                 instance = json.load(from_json)
