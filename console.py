@@ -11,7 +11,7 @@ from models.place import Place
 from models.city import City
 from models.review import Review
 from models.state import State
-
+from models.amenity import Amenity
 
 class HBNBCommand(cmd.Cmd):
     # Creates prompt as (hbnb)
@@ -24,7 +24,8 @@ class HBNBCommand(cmd.Cmd):
             'Place': Place,
             'City': City,
             'Review': Review,
-            'State': State
+            'State': State,
+            'Amenity': Amenity,
               }
 
     # Define method of objects
@@ -42,10 +43,10 @@ class HBNBCommand(cmd.Cmd):
         'Creates a new instance of BaseModel, saves it and prints the id'
         if arg is '':
             print("** class name missing **")
-        elif arg not in self.classes:
+        elif arg not in HBNBCommand.classes:
             print("** class doesn't exist **")
         else:
-            new = self.classes[arg]()
+            new = HBNBCommand.classes[arg]()
             storage.save()
             print("{}".format(new.id))
 
@@ -55,15 +56,46 @@ class HBNBCommand(cmd.Cmd):
         obj_dict = storage.all()
         if arg is '':
             print("** class name missing **")
-        elif arg not in self.classes:
+        elif args[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
-        elif args[1] is not id:
+        elif len(args) < 2:
             print("** instance id missing **")
         else:
+            key = args[0] + '.' + args[1]
             try:
-                print("** no instance found **")
+                print(obj_dict[key])
             except:
-                print(obj_dict)
+                print("** no instance found **")
+
+    def do_destroy(self, arg):
+        'Delete an object based on class name and id'
+        args = arg.split(" ")
+        if arg is '':
+            print("** class name missing **")
+        elif args[0] not in HBNBCommand.classes:
+            print("** class doesn't exist **")
+        elif len(args) < 2:
+            print("** instance id missing **")
+        else:
+            key = args[0] + '.' + args[1]
+            obj_dict = storage.all()
+            try:
+                del(obj_dict[key])
+                storage.save()
+            except:
+                print("** no instance found **")
+
+    def do_all(self, arg):
+        'Prints all string reps of all instaces, with or without class'
+        obj_dict = storage.all()
+        if not arg:
+            for key, value in obj_dict.items():
+                print("{}".format(obj_dict[key]))
+        else:
+            for key, value in obj_dict.items():
+                skey = key.split(".")
+                if skey[0] == arg:
+                    print("{}".format(obj_dict[key]))
 
     def emptyline(self):
         'Empties last command'
