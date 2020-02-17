@@ -146,5 +146,36 @@ class HBNBCommand(cmd.Cmd):
         'Help message for EOF'
         print('Upon end of file, exits shell')
 
+    def help_create(self):
+        'Help message for create'
+        print('Creates a new instance of BaseModel,\
+saves it (to the JSON file) and\
+prints the id. Ex: $ create BaseModel')
+
+    def help_show(self):
+        'Help message for show'
+        print('Prints the string representation of an instance\
+based on the class name and id.\
+Ex: $ show BaseModel 1234-1234-1234.')
+
+    def help_destroy(self):
+        'Help message for destroy'
+        print('Deletes an instance based on the class name\
+and id (save the change into the JSON file).\
+Ex: $ destroy BaseModel 1234-1234-1234.')
+
+    def help_all(self):
+        'Help message for all'
+        print('Prints all string representation of all\
+instances based or not on the class name.\
+Ex: $ all BaseModel or $ all.')
+
+    def help_update(self):
+        'Help message for update'
+        print('Updates an instance based on the class name and \
+id by adding or updating attribute (save the change \
+into the JSON file). Ex: $ update BaseModel \
+1234-1234-1234 email "aibnb@holbertonschool.com".')
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
