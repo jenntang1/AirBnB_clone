@@ -3,6 +3,7 @@
 import json
 from os import path
 
+
 class FileStorage:
     """ Creating a class to serialize instances to a JSON file
     and deserialize JSON file to instances.
