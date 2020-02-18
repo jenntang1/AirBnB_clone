@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ BaseModel Implementation """
-from uuid import uuid4
+import uuid
 from datetime import datetime
 from models import storage
 
@@ -27,7 +27,7 @@ class BaseModel:
             updt['updated_at'] = datetime.strptime(self.updated_at, fmt)
             del updt['__class__']
         else:
-            self.id = str(uuid4())
+            self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             storage.new(self)
