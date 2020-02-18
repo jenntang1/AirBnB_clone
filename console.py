@@ -121,7 +121,8 @@ class HBNBCommand(cmd.Cmd):
                     for key, value in obj_dict.items():
                         skey = key.split(".")
                         if skey[1] == args[1]:
-                            updater = {args[2]: args[3]}
+                            val = args[3]
+                            updater = {args[2]: val.replace('"', '')}
                             (obj_dict[key].__dict__).update(updater)
                     storage.save()
 
