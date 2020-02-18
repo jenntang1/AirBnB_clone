@@ -107,23 +107,23 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(args) < 2:
             print("** instance id missing **")
-        elif args[1] == 0:
-            for key, value in obj_dict.items():
-                skey = key.split(".")
-                if skey[1] != args[1]:
-                    print("** no instance found **")
-        elif len(args) < 3:
-            print("** attribute name missing **")
-        elif len(args) < 4:
-            print("** value missing **")
         else:
             for key, value in obj_dict.items():
                 skey = key.split(".")
-                if skey[1] == args[1]:
-                    val = args[3]
-                    updater = {args[2]: args[3]}
-                    (obj_dict[key].__dict__).update(updater)
-            storage.save()
+            if skey[1] != args[1]:
+                print("** no instance found **")
+            else:
+                if len(args) < 3:
+                    print("** attribute name missing **")
+                elif len(args) < 4:
+                    print("** value missing **")
+                else:
+                    for key, value in obj_dict.items():
+                        skey = key.split(".")
+                        if skey[1] == args[1]:
+                            updater = {args[2]: args[3]}
+                            (obj_dict[key].__dict__).update(updater)
+                    storage.save()
 
     def emptyline(self):
         'Empties last command'
