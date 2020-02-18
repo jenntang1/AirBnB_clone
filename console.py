@@ -13,6 +13,7 @@ from models.review import Review
 from models.state import State
 from models.amenity import Amenity
 
+
 class HBNBCommand(cmd.Cmd):
     # Creates prompt as (hbnb)
     intro = ''
@@ -106,7 +107,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(args) < 2:
             print("** instance id missing **")
-        #elif args[1] not in obj_dict.items() and args[0] + args[1] not in obj_dict.items():
         elif args[1] == 0:
             for key, value in obj_dict.items():
                 skey = key.split(".")
