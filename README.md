@@ -7,55 +7,143 @@ The following illustrates the project scope.
 ![hbnbscope](https://i.imgur.com/mx6uz0U.png)
 
 The following illustrates the file organization of this repository.  
-![fileorg](https://i.imgur.com/7FXAWhA.png)
+![hbnbfileorg](https://i.imgur.com/7cQM83Z.png)
 
-The following illustrates the console in interactive mode.  
+The following illustrates the console in interactive mode.  In order to start the console, execute the console.py file on the command line.  Then, type in commands like create, show, destroy, update or all followed by the class name.  The quit, EOF and help commands doesn't need additional arguments on the command line.  The all command would display all class objects if no argument follows.  
+![hbnbinteractive](https://imgur.com/msr1Smv)
 
+![hbnbquit](https://imgur.com/d7o8zhB)
 
-The following iluustrates the console in non-interactive mode.  
+![hbnbEOF](https://imgur.com/w2VrGk3)
 
+The following illustrates the console in non-interactive mode.  
+![hbnbnoninteractive](https://imgur.com/ZebRfae)
 
 # General #
 0. How to create a Python package?  
 A Python package is a way to organize files and directories in a large-scale project.  In Python, each file is treated as a module and each directory is treated as a sub-module.  In each directory, there must be an \_\_init\_\_.py file so that Python knows to include the directory in the package.  Usually, the \_\_init\_\_.py file is empty but could include a list of modules.  In this project, the top-level module is called models which contains the base class and all its sub-classes.  And within it, there's a sub-module called engine that holds the file storage class.  The \_\_init\_\_.py file in models links the base class to the file storage class and vice versa.  In this project, a variable called storage was declared and initialized with the file storage class in the \_\_init\_\_.py file.  When storage is called in the base class, it knows to call and execute the methods from the file storage class.  
 
-The following is the import statements in the \_\_init\_\_.py file.  
+    The following are the import statements in the \_\_init\_\_.py file.  
+
 ```python
 from models.engine.file_storage import FileStorage
 storage = FileStorage()
 storage.reload()
 ```
 
-The following illustrates the organization of this project's package.  
-![Pythonpkg](https://i.imgur.com/MP8fjzC.png)
+    The following illustrates the organization of this project's package.  
+![hbnbpythonpkg](https://i.imgur.com/MP8fjzC.png)
 
 1. How to create a command interpreter in Python using the cmd module?  
+In Python, the cmd module supports building a command line interpreter interactively.  The Cmd class in the module should be passed into the command processor class.  At the bottom of the file, apply a loop to read all lines from input, parse them and execute the command.  In the class, declare a public class attribute to create a custom prompt.  In this project, the commands handled are quit, EOF (end-of-file), empty line, help, create, show, destroy, all and update.  The quit and EOF commands would exit the interpreter normally.  The empty line with ENTER shouldn't execute anything.  The help command will raise messages for the command specified.  The create command creates a new instance of the base class, saves it to JSON and prints a randomly assigned id.  The show command prints a string representation of an instance of the specified class and id.  The destroy command deletes an instance of the specified class and id.  The all command prints a string representation of all instances.  The update command will update an instance's attributes.  
 
+    The following outlines the command line interpreter for this project using the cmd module.  
+
+```python
+import cmd
+import sys
+
+
+class HBNBCommand(cmd.Cmd):
+    prompt = '(hbnb)'
+
+    def do_quit(self, arg):
+        return True
+
+    def do_EOF(self, arg):
+        return True
+
+    def do_create(self, arg):
+        do something
+
+    def do_show(self, arg):
+        do something
+
+    def emptyLine(self):
+        pass
+
+    def help(self):
+        print ("help message")
+
+if __name__ == '__main__':
+   HBNBCommand().cmdloop()
+```
 
 2. What is Unit testing and how to implement it in a large project?  
+In a large-scale project, unit tests are important in validating all classes.  By importing the unittest module, test cases could be automated and executed with a simple command (see below).  
 
+```python
+python3 -m unittest discover tests
+```
+
+    The files in the tests directory is structured similar to the models directory.  Each class in the models directory has its own test file.  The subclasses: user, city, state, place, amenity and review inherits test cases from the base class.  
 
 3. How to serialize and deserialize a Class?  
-In Python, the json module would serialize and deserialize a Class.  In order to serialize a Class, 
+In Python, the json module would serialize and deserialize a Class.  In order to serialize a Class, use the load function to convert a string into a JSON object and save it to a file.  Or use the loads function to also convert a string into a JSON object but it goes to standard output that's human readable.  In order to deserialize a Class, use the dump function to convert the JSON object into a string and save it to a file.  Or use the dumps function to also convert the JSON object into a string but it goes to standard output.  
 
 4. How to write and read a JSON file?  
+In Python, the json module needs to be imported to write to a file and read from a file.  When paired with the with statement, the JSON file could be comprehensively opened and closed.  In this project, the save method serializes an object and saves it to a JSON file and the reload method reads the JSON object from its file and deserializes it to an object.  Essentially, these two methods makes up the FileStorage class which is the first storage engine of this project.  
 
+The following illustrates writing and reading a JSON file.  
+
+```python
+""" Example of writing JSON into a file """
+import json
+
+
+with open('file.json', 'r') as file_object:
+    data = json.load(file_object)
+```
+
+```python
+""" Example of reading JSON from a file """
+import json
+
+
+with open('file.json', 'w') as file_object:
+    json.dump(data, file_object)
+```
 
 5. How to manage datetime?  
-
+In Python, datetime is a module that helps with manipulating dates and times.  The classes are date, time, datetime, timedelta and tzinfo.  In this project, the datetime class is imported to create datetime objects that are categorized as aware or naive.  By default, a datetime object is naive but could be made aware to account for time zones and daylight savings.  It already has class attributes: year, month, day, hour, minute, second, microsecond and tzinfo (time zone information).  When datetime objects are creates, they are immutable, hashable and supports pickling.  Use the now function to create an instance of datetime with the current date and time.  Use the strptime function to create a datetime object from a string.  Use the strftime function to create a string into a datetime object.  
 
 6. What is an UUID?  
-
+UUID stands for Universal Unique Identifier that's a Python library.  It generates random and unique ids that could be represented as a string, integer or hexadecimal.  The string would be 16 bytes, the integer would be 128 bits and the hexadecimal would be a 32 character string.  Within UUID, there are a few functions that would generate random objects.  The most commonly used are uuid1() and uuid4().  The difference is that uuid1() would generate an id that contains the computer's ip address but uuid4() doesn't.  
 
 7. What is \*args and how to use it?  
+\*args is a tuple containing arguments that are passed to a function.  When used, many arguments could be passed into a function.  However, it's needs to be passed in positionally which means the arguments need to be in a particular order.  
 
+```python
+def args_example(arg1, arg2, arg3):
+    print("arg1:", arg1)
+    print("arg2:", arg2)
+    print("arg3:", arg3)
+
+args = ("Hello", "World", "!")
+args_exampe(*args)
+
+arg1: Hello
+arg2: World
+arg3: !
+```
 
 8. What is \*\*kwargs and how to use it?  
+\*\*kwargs is a dictionary containing key/value pair arguments that are passed to a function.  Similiar to \*args, many arguments could be passed into a function.  Unlike \*args, \*\*kwargs has to be keyword arguments so that the function could match the argument to the key in the dictionary.  
 
+```python
+def kwargs_example(**kwargs):
+    for key, value in kwargs.items():
+        print("{}: {}".format(key, value))
+
+kwargs_example(kwarg1="Betty Holberton", kwarg2="Malala Yousafzai", kwarg3="Maya Angelou")
+
+kwarg1: Betty Holberton
+kwarg2: Malala Yousafzai
+kwarg3: Maya Angelou
+```
 
 9. How to handle named arguments in a function?  
-
-
+In this project, the name/keyword argument will be a dictionary.  The key would be the class attribute name  and the value would be the unique id, first created datetime object and the updated datetime object.  
 
 # Resources #
 0. Official Python Website  
@@ -71,5 +159,5 @@ https://pythontips.com/2013/08/04/args-and-kwargs-in-python-explained/
 https://www.pythonsheets.com/notes/python-tests.html  
 
 # Authors #
-Flavio Espinoza <flavio.vilchezespinoza@holbertonschool.com>
+Flavio Espinoza <flavio.vilchezespinoza@holbertonschool.com>  
 Jennifer Tang <jennifer.tang@holbertonschool.com>
