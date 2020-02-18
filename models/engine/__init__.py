@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Python Packaging facilitation """
+""" Python Packaging Facilitation """
 import models.engine.file_storage
 
 
