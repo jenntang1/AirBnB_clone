@@ -10,14 +10,14 @@ The following illustrates the file organization of this repository.
 ![hbnbfileorg](https://i.imgur.com/7cQM83Z.png)
 
 The following illustrates the console in interactive mode.  In order to start the console, execute the console.py file on the command line.  Then, type in commands like create, show, destroy, update or all followed by the class name.  The quit, EOF and help commands doesn't need additional arguments on the command line.  The all command would display all class objects if no argument follows.  
-![hbnbinteractive](https://imgur.com/msr1Smv)
+![hbnbinteractive](https://i.imgur.com/JPUGd72.png)
 
-![hbnbquit](https://imgur.com/d7o8zhB)
+![hbnbquit](https://i.imgur.com/JxOJ7HF.png)
 
-![hbnbEOF](https://imgur.com/w2VrGk3)
+![hbnbeof](https://i.imgur.com/L3v53mE.png)
 
 The following illustrates the console in non-interactive mode.  
-![hbnbnoninteractive](https://imgur.com/ZebRfae)
+![hbnbnoninteractive](https://i.imgur.com/rnXiN47.png)
 
 # General #
 0. How to create a Python package?  
@@ -30,7 +30,7 @@ from models.engine.file_storage import FileStorage
 storage = FileStorage()
 storage.reload()
 ```
-
+    
     The following illustrates the organization of this project's package.  
 ![hbnbpythonpkg](https://i.imgur.com/MP8fjzC.png)
 
@@ -75,7 +75,7 @@ In a large-scale project, unit tests are important in validating all classes.  B
 ```python
 python3 -m unittest discover tests
 ```
-
+    
     The files in the tests directory is structured similar to the models directory.  Each class in the models directory has its own test file.  The subclasses: user, city, state, place, amenity and review inherits test cases from the base class.  
 
 3. How to serialize and deserialize a Class?  
@@ -83,8 +83,8 @@ In Python, the json module would serialize and deserialize a Class.  In order to
 
 4. How to write and read a JSON file?  
 In Python, the json module needs to be imported to write to a file and read from a file.  When paired with the with statement, the JSON file could be comprehensively opened and closed.  In this project, the save method serializes an object and saves it to a JSON file and the reload method reads the JSON object from its file and deserializes it to an object.  Essentially, these two methods makes up the FileStorage class which is the first storage engine of this project.  
-
-The following illustrates writing and reading a JSON file.  
+    
+    The following illustrates writing and reading a JSON file.  
 
 ```python
 """ Example of writing JSON into a file """
