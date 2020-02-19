@@ -161,6 +161,13 @@ class HBNBCommand(cmd.Cmd):
                 class_id = arg_split[1]
                 arg = _class + " " + class_id
                 HBNBCommand.do_destroy(self, arg)
+            if method_id[0:7] == 'update(':
+                arg_split2 = method.split(",")
+                class_id = arg_split2[0].split("(")[1].replace('"', "")
+                att_name = arg_split2[1].replace('"', "")
+                att_val = arg_split2[2].replace(")", "")
+                arg = _class + " " + class_id + " " + att_name + " " + att_val
+                HBNBCommand.do_update(self, arg)
 
     def emptyline(self):
         'Empties last command'
