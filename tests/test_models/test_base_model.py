@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Unittest for BaseModel """
 import unittest
-from uuid import UUID
+import os
 from datetime import datetime
 from models.base_model import BaseModel
 
@@ -28,3 +28,10 @@ class BaseModel_Test(unittest.TestCase):
         """ Check updated_at type """
         test = self.test_class()
         self.assertIsInstance(test.updated_at, datetime)
+
+    def tearDown(self):
+        """ Using tearDown method """
+        try:
+            os.remove("file.json")
+        except:
+            pass
