@@ -29,6 +29,20 @@ class BaseModel_Test(unittest.TestCase):
         test = self.test_class()
         self.assertIsInstance(test.updated_at, datetime)
 
+    def test_str_method(self):
+        """ Check string method """
+        test = self.test_class()
+        self.assertIsInstance(test.__str__(), str)
+
+    def test_save_method(self):
+        """ Check save method """
+        self.assertFalse(os.path.exists("file.json"))
+
+    def test_to_dict(self):
+        """ Check to_dict method """
+        test = self.test_class()
+        self.assertIsInstance(test.to_dict(), dict)
+
     def tearDown(self):
         """ Using tearDown method """
         try:
