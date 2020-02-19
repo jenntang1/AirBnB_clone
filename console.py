@@ -204,5 +204,9 @@ id by adding or updating attribute (save the change \
 into the JSON file). Ex: $ update BaseModel \
 1234-1234-1234 email "aibnb@holbertonschool.com".')
 
+    def help_count(self):
+        'Help message for count'
+        print('retrieve the number of instances of a class')
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
