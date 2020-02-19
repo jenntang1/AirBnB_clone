@@ -37,7 +37,7 @@ The following illustrates the organization of this project's package.
 1. How to create a command interpreter in Python using the cmd module?  
 In Python, the cmd module supports building a command line interpreter interactively.  The Cmd class in the module should be passed into the command processor class.  At the bottom of the file, apply a loop to read all lines from input, parse them and execute the command.  In the class, declare a public class attribute to create a custom prompt.  In this project, the commands handled are quit, EOF (end-of-file), empty line, help, create, show, destroy, all and update.  The quit and EOF commands would exit the interpreter normally.  The empty line with ENTER shouldn't execute anything.  The help command will raise messages for the command specified.  The create command creates a new instance of the base class, saves it to JSON and prints a randomly assigned id.  The show command prints a string representation of an instance of the specified class and id.  The destroy command deletes an instance of the specified class and id.  The all command prints a string representation of all instances.  The update command will update an instance's attributes.  
 
-    The following provides more details for each command:  
+    The following are more details for each command:  
 
     Create command  
     1. creates a new instance of BaseModel
