@@ -126,6 +126,18 @@ class HBNBCommand(cmd.Cmd):
                             (obj_dict[key].__dict__).update(updater)
                     storage.save()
 
+    def do_count(self, arg):
+        obj_dict = storage.all()
+        count = 0
+        args = arg.split(" ")
+        _class = args[0]
+        if arg:
+            for key, val in obj_dict.items():
+                skey = key.split(".")
+                if _class == skey[0]:
+                    count += 1
+            print(count)
+
     def default(self, line):
         if "." not in line:
             return cmd.Cmd.default(self, line)
@@ -137,9 +149,8 @@ class HBNBCommand(cmd.Cmd):
         if _class in HBNBCommand.classes:
             if method[0:5] == 'all()':
                 HBNBCommand.do_all(self, _class)
-            # if method[0:8] == 'count()':
-            # if _class
-            # if method[0:8]
+            if method[0:8] == 'count()':
+                HBNBCommand.do_count(self, _class)
 
     def emptyline(self):
         'Empties last command'
