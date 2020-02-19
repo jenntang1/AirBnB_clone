@@ -137,9 +137,9 @@ class HBNBCommand(cmd.Cmd):
         if _class in HBNBCommand.classes:
             if method[0:5] == 'all()':
                 HBNBCommand.do_all(self, _class)
-            if method[0:8] == 'count()':
-                if _class
-            if method[0:8]
+            # if method[0:8] == 'count()':
+            # if _class
+            # if method[0:8]
 
     def emptyline(self):
         'Empties last command'
