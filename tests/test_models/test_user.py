@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 """ Unittest for User Class """
-from unittest import TestCase
-from models.base_model import BaseModel
 from models.user import User
 from tests.test_models.test_base_model import BaseModel_Test
 

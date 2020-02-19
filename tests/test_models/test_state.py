@@ -1,13 +1,20 @@
 #!/usr/bin/python3
 """ Unittest for State Class """
-from unittest import TestCase
-from models.base_model import BaseModel
+from testss.test_models.test_base_model import BaseModel_Test
 from models.state import State
 
 
-class State_Test(unittest.TestCase):
-    """ Creating class to test State class. """
+class State_Test(BaseModel_Test):
+    """ Creating class to test State class """
+    def __init__(self, *args, **kwargs):
+        """ Using __init__ method """
+        super().__init__(*args, **kwargs)
+        self.test_class = State
 
+    def test_state(self):
+        """ Check name type """
+        test = self.test_class()
+        self.assertIsInstance(test.name, str)
 
 if __name__ == "__main__":
     unittest.main()
