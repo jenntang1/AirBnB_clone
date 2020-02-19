@@ -28,6 +28,3 @@ class BaseModel_Test(unittest.TestCase):
         """ Check updated_at type """
         test = self.test_class()
         self.assertIsInstance(test.updated_at, datetime)
-
-if __name__ == "__main__":
-    unittest.main()
