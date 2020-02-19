@@ -40,19 +40,7 @@ class FileStorage_Test(unittest.TestCase):
     def test_empty(self):
         """ Check empty file """
         test = self.test_class()
-        self.assertEqual(test.__file_path, "")
-
-    def tearDown(self):
-        """ Using tearDown method """
-        try:
-            os.remove("file.json")
-        except:
-            pass
-
-    def test_None(self):
-        """ Check if there's no file """
-        test = self.test_class(None)
-        self.assertEqual(test.__file_path, "")
+        self.assertTrue(os.stat(test.__file_path).st_size == 0)
 
     def tearDown(self):
         """ Using tearDown method """
