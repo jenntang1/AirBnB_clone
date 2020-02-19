@@ -111,7 +111,6 @@ class HBNBCommand(cmd.Cmd):
             for key, value in obj_dict.items():
                 skey = key.split(".")
             if skey[0] != args[0]:
-                print(skey[1] , args[1])
                 print("** no instance found **")
             else:
                 if len(args) < 3:
