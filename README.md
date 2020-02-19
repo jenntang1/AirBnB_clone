@@ -1,5 +1,3 @@
-![hbnblogo](https://i.imgur.com/Ztfv04o.png)
-
 # hbnb (The Holberton B&B) #
 The program codes contained in this repository is the first phase in implementing the hbnb web application.  This web application allows an user to create an account to make a posting of their property for short-term rent.  It also allows an user to look through all postings to rent a property.  The first phase is to set up a console for development and debugging.  In development, the base class implementation will handle initialization, serialization and deserialization of instances into JSON.  It will be a simple flow of instance into dictionary into JSON into a file.  Additionally, the console will be a command line interpreter that handles creating, displaying, destroying and updating user data (objects creation through sub-classes).  It's able to take in commands in interactive and non-interactive mode.  Also, as part of development, a file storage engine will save all instances as JSON strings into a file.  In debugging, unittests using the Pythong unittest module will be performed on thhe base class, sub-classes and file storage engine.  The second phase is to develop the first part of the client side interface.  It will be a static website made with HTML 5.  The third phase of this project will be creating a database with MySQL for advanced file storage.  The fourth phase will be deploying the static website.  There could be Go Live issues that arises.  Thus, debugging is quite important at this point.  The fifth phase is to create a web server and a dynamic website.  The sixth phase is using RESTful API to expose and manipulate all data stored in JSON.  The final phase is loading data from client side into server side.  
 
@@ -27,15 +25,55 @@ A Python package is a way to organize files and directories in a large-scale pro
 
 ```python
 from models.engine.file_storage import FileStorage
+
+
 storage = FileStorage()
 storage.reload()
 ```
-    
-    The following illustrates the organization of this project's package.  
+
+The following illustrates the organization of this project's package.  
 ![hbnbpythonpkg](https://i.imgur.com/MP8fjzC.png)
 
 1. How to create a command interpreter in Python using the cmd module?  
 In Python, the cmd module supports building a command line interpreter interactively.  The Cmd class in the module should be passed into the command processor class.  At the bottom of the file, apply a loop to read all lines from input, parse them and execute the command.  In the class, declare a public class attribute to create a custom prompt.  In this project, the commands handled are quit, EOF (end-of-file), empty line, help, create, show, destroy, all and update.  The quit and EOF commands would exit the interpreter normally.  The empty line with ENTER shouldn't execute anything.  The help command will raise messages for the command specified.  The create command creates a new instance of the base class, saves it to JSON and prints a randomly assigned id.  The show command prints a string representation of an instance of the specified class and id.  The destroy command deletes an instance of the specified class and id.  The all command prints a string representation of all instances.  The update command will update an instance's attributes.  
+
+    The following provides more details for each command:  
+
+    Create command  
+    1. creates a new instance of BaseModel
+    2. saves new instance to a json file
+    3. prints the randomly assigned id
+    4. if class name is not given, print “\*\* class name missing \*\*”
+    5. if class name doesn’t exist, print “\*\* class doesn’t exist \*\*”
+
+    Show command  
+    1. prints a string representation of an instance
+    2. if class name is not given, print “\*\* class name missing \*\*”
+    3. if class name doesn’t exist, print “\*\* class doesn’t exist \*\*”
+    4. if the randomly assigned id is not given, print “\*\* instance id missing \*\*”
+    5. if the instance doesn’t exist for the id given, print “\*\* no instance found \*\*”
+
+    Destroy command  
+    1. deletes an instance
+    2. saves the deletion into json file
+    3. if class name is not given, print “\*\* class name missing \*\*”
+    4. if class name doesn’t exist, print “\*\* class doesn’t exist \*\*”
+    5. if the randomly assigned id is missing, print “\*\* instance id missing \*\*”
+    6. if the instance doesn’t exist for the id given, print “\*\* no instance found \*\*”
+
+    All command  
+    1. prints all string representation for all instances when no class name is given
+    2. prints all string representation for a class when a class name is given
+    3. if class name doesn't exist, print "\*\* class doesn't exist \*\*"
+
+    Update command  
+    1. updates an instance with given class anme and randomly assigned id
+    2. only one attribute could be updated at a time
+    3. if the class name is not given, print "\*\* class name missing \*\*"
+    4. if the class name doesn't exist, print "\*\* class doesn't exist \*\*"
+    5. if the instance doesn't exist for the id given, print "\*\* no instance found \*\*"
+    6. if the attribute is not given, print "\*\* attribute name missing \*\*"
+    7. if the value of the attribute doesn't exist, print "\*\* value missing \*\*"
 
     The following outlines the command line interpreter for this project using the cmd module.  
 
@@ -75,8 +113,8 @@ In a large-scale project, unit tests are important in validating all classes.  B
 ```python
 python3 -m unittest discover tests
 ```
-    
-    The files in the tests directory is structured similar to the models directory.  Each class in the models directory has its own test file.  The subclasses: user, city, state, place, amenity and review inherits test cases from the base class.  
+
+The files in the tests directory is structured similar to the models directory.  Each class in the models directory has its own test file.  The subclasses: user, city, state, place, amenity and review inherits test cases from the base class.  
 
 3. How to serialize and deserialize a Class?  
 In Python, the json module would serialize and deserialize a Class.  In order to serialize a Class, use the load function to convert a string into a JSON object and save it to a file.  Or use the loads function to also convert a string into a JSON object but it goes to standard output that's human readable.  In order to deserialize a Class, use the dump function to convert the JSON object into a string and save it to a file.  Or use the dumps function to also convert the JSON object into a string but it goes to standard output.  
