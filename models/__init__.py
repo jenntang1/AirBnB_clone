@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Python Packaging facilitation """
-import models.engine.file_storage
+from models.engine.file_storage import FileStorage
 
 
-storage = models.engine.file_storage.FileStorage()
+storage = FileStorage()
 storage.reload()
