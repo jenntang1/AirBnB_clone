@@ -126,6 +126,21 @@ class HBNBCommand(cmd.Cmd):
                             (obj_dict[key].__dict__).update(updater)
                     storage.save()
 
+    def default(self, line):
+        if "." not in line:
+            return cmd.Cmd.default(self, line)
+        syntax = line.split(".")
+        _class = syntax[0]
+        method = syntax[1]
+        obj_dict = storage.all()
+
+        if _class in HBNBCommand.classes:
+            if method[0:5] == 'all()':
+                HBNBCommand.do_all(self, _class)
+            if method[0:8] == 'count()':
+                if _class
+            if method[0:8]
+
     def emptyline(self):
         'Empties last command'
         pass
