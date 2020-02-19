@@ -153,10 +153,14 @@ class HBNBCommand(cmd.Cmd):
                 HBNBCommand.do_count(self, _class)
             arg_split = method.split('"')
             method_id = arg_split[0]
-            if method_id[0:5]== 'show(':
+            if method_id[0:5] == 'show(':
                 class_id = arg_split[1]
                 arg = _class + " " + class_id
                 HBNBCommand.do_show(self, arg)
+            if method_id[0:8] == 'destroy(':
+                class_id = arg_split[1]
+                arg = _class + " " + class_id
+                HBNBCommand.do_destroy(self, arg)
 
     def emptyline(self):
         'Empties last command'
