@@ -9,24 +9,29 @@ from tests.test_models.test_base_model import BaseModel_Test
 class User_Test(BaseModel_Test):
     """ Creating class to test User class. """
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs):
+        """ Using __init__ method """
+        super().__init__(*args, **kwargs)
         self.test_class = User
-        self.test_name = "User"
-
-    def test_user(self):
-        pass
 
     def test_email(self):
-        pass
+        """ Check email type """
+        test = self.test_class()
+        self.assertIsInstance(test.email, str)
 
     def test_password(self):
-        pass
+        """ Check password type """
+        test = self.test_class()
+        self.assertIsInstance(test.password, str)
 
-    def test_fist_name(self):
-        pass
+    def test_first_name(self):
+        """ Check first_name type """
+        test = self.test_class()
+        self.assertIsInstance(test.first_name, str)
 
     def test_last_name(self):
-        pass
+        """ Check last_name type """
+        test = self.test_class()
+        self.assertIsInstance(test.last_name, str)
 
 if __name__ == "__main__":
     unittest.main()
