@@ -3,7 +3,7 @@
 import os
 import unittest
 from models.engine.file_storage import FileStorage
-from tests.test_models.test_base_model import BaseModel_Test
+from models import storage
 
 
 class FileStorage_Test(unittest.TestCase):
@@ -16,7 +16,7 @@ class FileStorage_Test(unittest.TestCase):
     def test_file_path(self):
         """ Check file_path type """
         test = self.test_class()
-        self.assertIsInstance(test.__file_path, str)
+        self.assertIsInstance(test._FileStorage__file_path, str)
 
     def tearDown(self):
         """ Using tearDown method """
@@ -28,7 +28,7 @@ class FileStorage_Test(unittest.TestCase):
     def test_objects(self):
         """ Check __objects type """
         test = self.test_class()
-        self.assertIsInstance(test.__objects, dict)
+        self.assertIsInstance(test._FileStorage__objects, dict)
 
     def tearDown(self):
         """ Using tearDown method """
@@ -39,8 +39,20 @@ class FileStorage_Test(unittest.TestCase):
 
     def test_empty(self):
         """ Check empty file """
+        storage.save()
         test = self.test_class()
-        self.assertTrue(os.stat(test.__file_path).st_size == 0)
+        self.assertFalse(os.stat(test._FileStorage__file_path).st_size == 0)
+
+    def tearDown(self):
+        """ Using tearDown method """
+        try:
+            os.remove("file.json")
+        except:
+            pass
+
+    def test_file_exist(self):
+        """ Check file.json exists file """
+        self.assertFalse(os.path.exists("file.json"))
 
     def tearDown(self):
         """ Using tearDown method """
