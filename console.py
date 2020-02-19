@@ -110,7 +110,8 @@ class HBNBCommand(cmd.Cmd):
         else:
             for key, value in obj_dict.items():
                 skey = key.split(".")
-            if skey[1] != args[1]:
+            if skey[0] != args[0]:
+                print(skey[1] , args[1])
                 print("** no instance found **")
             else:
                 if len(args) < 3:
@@ -164,9 +165,13 @@ class HBNBCommand(cmd.Cmd):
             if method_id[0:7] == 'update(':
                 arg_split2 = method.split(",")
                 class_id = arg_split2[0].split("(")[1].replace('"', "")
+                print(class_id)
                 att_name = arg_split2[1].replace('"', "")
+                print(att_name)
                 att_val = arg_split2[2].replace(")", "")
-                arg = _class + " " + class_id + " " + att_name + " " + att_val
+                print(att_val)
+                arg = _class + " " + class_id + " " + att_name[1:] + att_val
+                print(arg)
                 HBNBCommand.do_update(self, arg)
 
     def emptyline(self):
