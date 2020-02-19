@@ -30,6 +30,3 @@ class User_Test(BaseModel_Test):
         """ Check last_name type """
         test = self.test_class()
         self.assertIsInstance(test.last_name, str)
-
-if __name__ == "__main__":
-    unittest.main()

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Unittest for State Class """
-from testss.test_models.test_base_model import BaseModel_Test
+from tests.test_models.test_base_model import BaseModel_Test
 from models.state import State
 
 
@@ -15,6 +15,3 @@ class State_Test(BaseModel_Test):
         """ Check name type """
         test = self.test_class()
         self.assertIsInstance(test.name, str)
-
-if __name__ == "__main__":
-    unittest.main()

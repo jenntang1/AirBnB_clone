@@ -21,7 +21,7 @@ class Place_Test(BaseModel_Test):
         test = self.test_class()
         self.assertIsInstance(test.user_id, str)
 
-    def test_name(self):
+    def test_place_name(self):
         """ Check name type """
         test = self.test_class()
         self.assertIsInstance(test.name, str)
@@ -65,6 +65,3 @@ class Place_Test(BaseModel_Test):
         """ Check amenity_ids type """
         test = self.test_class()
         self.assertIsInstance(test.amenity_ids, list)
-
-if __name__ == "__main__":
-    unittest.main()

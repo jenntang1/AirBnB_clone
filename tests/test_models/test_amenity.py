@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Unittest for Amenity Class """
-from tests.test_models.test_base_model import BaseModel_Test
 from models.amenity import Amenity
+from tests.test_models.test_base_model import BaseModel_Test
 
 
 class Amenity_Test(BaseModel_Test):
@@ -11,10 +11,7 @@ class Amenity_Test(BaseModel_Test):
         super().__init__(*args, **kwargs)
         self.test_class = Amenity
 
-    def test_name(self):
+    def test_amenity_name(self):
         """ Check name type """
         test = self.test_class()
         self.assertIsInstance(test.name, str)
-
-if __name__ == "__main__":
-    unittest.main()

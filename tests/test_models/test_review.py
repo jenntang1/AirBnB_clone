@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Unittest for Review Class """
-from tests.test_models.testbase_model import BaseModel_Test
+from tests.test_models.test_base_model import BaseModel_Test
 from models.review import Review
 
 
@@ -25,6 +25,3 @@ class Review_Test(BaseModel_Test):
         """ Check text type """
         test = self.test_class()
         self.assertIsInstance(test.text, str)
-
-if __name__ == "__main__":
-    unittest.main()
