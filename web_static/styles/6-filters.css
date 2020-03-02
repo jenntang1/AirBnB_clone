@@ -43,6 +43,9 @@ li {
 	margin-left: 10px;
 	list-style-type: none;
 }
+li h2 {
+	margin-left: -10px;
+}
 .popover {
 	display: none;
 	border: 1px solid #DDDDDD;
