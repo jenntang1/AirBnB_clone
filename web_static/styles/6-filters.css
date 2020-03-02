@@ -41,6 +41,7 @@ h4 {
 }
 li {
 	margin-left: 10px;
+	list-style-type: none;
 }
 .popover {
 	display: none;
