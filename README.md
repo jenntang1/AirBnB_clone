@@ -202,7 +202,7 @@ https://pythontips.com/2013/08/04/args-and-kwargs-in-python-explained/
 https://www.pythonsheets.com/notes/python-tests.html  
 
 ## Creators
-Jennifer Tang: [jennifer.tang@holbertonschool.com](mailto:jennifer0tang@gmail.com), [Github](https://github.com/jenntang1), [Linkedin](https://linkedin.com/in/jennifer-tang-nyc) and [Twitter](https://twitter.com/jenntang1)  
+Jennifer Tang: [Email](mailto:jennifer0tang@gmail.com), [Github](https://github.com/jenntang1), [Linkedin](https://linkedin.com/in/jennifer-tang-nyc) and [Twitter](https://twitter.com/jenntang1)  
 A budding Full-Stack Software Engineer living in Brooklyn, NY with interest in data science/management and experience in marketing analytics and pricing strategies.  Jennifer hopes to combine the analytical skills developed from ten years in Marketing with the technical programming skills gained to develop impactful applications and software.  Jennifer is the co-creator of [Pollen](https://github.com/jenntang1/pollen), an engaging and educational web application on forensic botany.  Forensic botany is a niche field of forensic science that uses plants or plant parts in investigating criminal cases.  It is not widely known to many, thus, its mission is to educate those who never heard of forensic botany and show its societal impact.  Additionally, it's a space for forensic botany enthusiasts to learn and discover cases they weren’t aware of.  When Jennifer is not on a computer, she likes to run outdoors, read the news, solve Sudoku, bake cookies and play with her nieces.  
 
-Flavio Vilchez Espinoza: [flavio.vilchezespinoza@holbertonschool.com](mailto:flavio.vilchezespinoza@holbertonschool.com) and [Github](https://github.com/fvesp18)  
+Flavio Vilchez Espinoza: [Email](mailto:flavio.vilchezespinoza@holbertonschool.com) and [Github](https://github.com/fvesp18)  
