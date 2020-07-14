@@ -1,6 +1,6 @@
 ![hbnbheader](https://i.imgur.com/smlxqpv.png)
 
-# hbnb (The Holberton B&B) #
+# hbnb (The Holberton B&B)
 The program codes contained in this repository is the first phase in implementing the hbnb web application.  This web application allows an user to create an account to make a posting of their property for short-term rent.  It also allows an user to look through all postings to rent a property.  The first phase is to set up a console for development and debugging.  In development, the base class implementation will handle initialization, serialization and deserialization of instances into JSON.  It will be a simple flow of instance into dictionary into JSON into a file.  Additionally, the console will be a command line interpreter that handles creating, displaying, destroying and updating user data (objects creation through sub-classes).  It's able to take in commands in interactive and non-interactive mode.  Also, as part of development, a file storage engine will save all instances as JSON strings into a file.  In debugging, unittests using the Pythong unittest module will be performed on thhe base class, sub-classes and file storage engine.  The second phase is to develop the first part of the client side interface.  It will be a static website made with HTML 5.  The third phase of this project will be creating a database with MySQL for advanced file storage.  The fourth phase will be deploying the static website.  There could be Go Live issues that arises.  Thus, debugging is quite important at this point.  The fifth phase is to create a web server and a dynamic website.  The sixth phase is using RESTful API to expose and manipulate all data stored in JSON.  The final phase is loading data from client side into server side.  
 
 The following illustrates the project scope.  
@@ -19,7 +19,7 @@ The following illustrates the console in interactive mode.  In order to start th
 The following illustrates the console in non-interactive mode.  
 ![hbnbnoninteractive](https://i.imgur.com/rnXiN47.png)
 
-## General ##
+## Development
 0. How to create a Python package?  
 A Python package is a way to organize files and directories in a large-scale project.  In Python, each file is treated as a module and each directory is treated as a sub-module.  In each directory, there must be an \_\_init\_\_.py file so that Python knows to include the directory in the package.  Usually, the \_\_init\_\_.py file is empty but could include a list of modules.  In this project, the top-level module is called models which contains the base class and all its sub-classes.  And within it, there's a sub-module called engine that holds the file storage class.  The \_\_init\_\_.py file in models links the base class to the file storage class and vice versa.  In this project, a variable called storage was declared and initialized with the file storage class in the \_\_init\_\_.py file.  When storage is called in the base class, it knows to call and execute the methods from the file storage class.  
 
@@ -183,14 +183,17 @@ kwarg3: Maya Angelou
 ```
 
 9. How to handle named arguments in a function?  
-In this project, the name/keyword argument will be a dictionary.  The key would be the class attribute name  and the value would be the unique id, first created datetime object and the updated datetime object.  
+In this project, the name/keyword argument will be a dictionary.  The key would be the class attribute name and the value would be the unique id, first created datetime object and the updated datetime object.  
 
-## Resources ##
+## Challenges
+According to official [Python documentation](https://docs.python.org/3/tutorial/modules.html), "Modules can import other modules. It is customary but not required to place all import statements at the beginning of a module (or script, for that matter)."  However, the key challenge was learning to avoid circular imports in the file storage engine.  When creating the reload method, the following modules were required to be imported: Base Model, Amenity, City, Place, Review, State and User.  Instead of importing at the beginning of the file storage engine module, import statements were added under the reload method.  
+
+## Resources
 0. Official Python Website  
 https://docs.python.org/3/tutorial/modules.html  
 
 1. HBNB videos  
-https://www.youtube.com/playlist?list=PLlLHfkTcnvmPOp6jv\_89tRpJUMFrP-Wbi  
+https://www.youtube.com/playlist?list=PLlLHfkTcnvmPOp6jv_89tRpJUMFrP-Wbi  
 
 2. Python Tips Website  
 https://pythontips.com/2013/08/04/args-and-kwargs-in-python-explained/  
@@ -198,6 +201,8 @@ https://pythontips.com/2013/08/04/args-and-kwargs-in-python-explained/
 3. Python Sheets Website  
 https://www.pythonsheets.com/notes/python-tests.html  
 
-## Authors ##
-Flavio Espinoza <flavio.vilchezespinoza@holbertonschool.com>  
-Jennifer Tang <jennifer.tang@holbertonschool.com>
+## Creators
+Jennifer Tang: [jennifer.tang@holbertonschool.com](mailto:jennifer.tang@holbertonschool.com), [Github](https://github.com/jenntang1), [Linkedin](https://linkedin.com/in/jennifer-tang-nyc) and [Twitter](https://twitter.com/jenntang1)••
+A budding Full-Stack Software Engineer living in Brooklyn, NY with interest in data science/management and experience in marketing analytics and pricing strategies.  Jennifer hopes to combine the analytical skills developed from ten years in Marketing with the technical programming skills gained to develop impactful applications and software.  Jennifer is the co-creator of [Pollen](https://github.com/jenntang1/pollen), an engaging and educational web application on forensic botany.  Forensic botany is a niche field of forensic science that uses plants or plant parts in investigating criminal cases.  It is not widely known to many, thus, its mission is to educate those who never heard of forensic botany and show its societal impact.  Additionally, it's a space for forensic botany enthusiasts to learn and discover cases they weren’t aware of.  When Jennifer is not on a computer, she likes to run outdoors, read the news, solve Sudoku, bake cookies and play with her nieces.••
+
+Flavio Vilchez Espinoza: [flavio.vilchezespinoza@holbertonschool.com](mailto:flavio.vilchezespinoza@holbertonschool.com) and [Github](https://github.com/fvesp18)••
