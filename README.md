@@ -1,4 +1,4 @@
-![hbnbheader](https://i.imgur.com/smlxqpv.png)
+![hbnb_header](https://i.imgur.com/smlxqpv.png)
 
 # hbnb (The Holberton B&B)
 
@@ -6,20 +6,10 @@
 The program codes contained in this repository is the first phase in implementing the hbnb web application.  This web application allows an user to create an account to make a posting of their property for short-term rent.  It also allows an user to look through all postings to rent a property.  The first phase is to set up a console for development and debugging.  In development, the base class implementation will handle initialization, serialization and deserialization of instances into JSON.  It will be a simple flow of instance into dictionary into JSON into a file.  Additionally, the console will be a command line interpreter that handles creating, displaying, destroying and updating user data (objects creation through sub-classes).  It's able to take in commands in interactive and non-interactive mode.  Also, as part of development, a file storage engine will save all instances as JSON strings into a file.  In debugging, unittests using the Pythong unittest module will be performed on thhe base class, sub-classes and file storage engine.  The second phase is to develop the first part of the client side interface.  It will be a static website made with HTML 5.  The third phase of this project will be creating a database with MySQL for advanced file storage.  The fourth phase will be deploying the static website.  There could be Go Live issues that arises.  Thus, debugging is quite important at this point.  The fifth phase is to create a web server and a dynamic website.  The sixth phase is using RESTful API to expose and manipulate all data stored in JSON.  The final phase is loading data from client side into server side.  
 
 The following illustrates the project scope.  
-![hbnbscope](https://i.imgur.com/mx6uz0U.png)
+![hbnb_scope](https://i.imgur.com/mx6uz0U.png)
 
 The following illustrates the file organization of this repository.  
-![hbnbfileorg](https://i.imgur.com/7cQM83Z.png)
-
-The following illustrates the console in interactive mode.  In order to start the console, execute the console.py file on the command line.  Then, type in commands like create, show, destroy, update or all followed by the class name.  The quit, EOF and help commands doesn't need additional arguments on the command line.  The all command would display all class objects if no argument follows.  
-![hbnbinteractive](https://i.imgur.com/JPUGd72.png)
-
-![hbnbquit](https://i.imgur.com/JxOJ7HF.png)
-
-![hbnbeof](https://i.imgur.com/L3v53mE.png)
-
-The following illustrates the console in non-interactive mode.  
-![hbnbnoninteractive](https://i.imgur.com/rnXiN47.png)
+![hbnb_file_org](https://i.imgur.com/7cQM83Z.png)
 
 ## Background
 1. How to create a Python package?  
@@ -191,23 +181,34 @@ In this project, the name/keyword argument will be a dictionary.  The key would 
 According to official [Python documentation](https://docs.python.org/3/tutorial/modules.html), "Modules can import other modules. It is customary but not required to place all import statements at the beginning of a module (or script, for that matter)."  However, the key challenge was learning to avoid circular imports in the file storage engine.  When creating the reload method, the following modules were required to be imported: Base Model, Amenity, City, Place, Review, State and User.  Instead of importing at the beginning of the file storage engine module, import statements were added under the reload method.  
 
 ## Installation
+Simply clone this repository to begin using on your local machine.  
 
+```bash
+git clone https://github.com/jenntang1/AirBnB_clone.git
+```
 
 ## Usage
+The following illustrates the console in interactive mode.  In order to start the console, execute the console.py file on the command line.  Then, type in commands like create, show, destroy, update or all followed by the class name.  The quit, EOF and help commands doesn't need additional arguments on the command line.  The all command would display all class objects if no argument follows.  
+![hbnb_interactive](https://i.imgur.com/JPUGd72.png)
 
+![hbnb_quit](https://i.imgur.com/JxOJ7HF.png)
 
+![hbnb_eof](https://i.imgur.com/L3v53mE.png)
+
+The following illustrates the console in non-interactive mode.  Additionally, it showcases the Create, Show, All, Destroy and Update commands.  
+![hbnb_non_interactive](https://i.imgur.com/rnXiN47.png)
 
 ## Resources
-0. Official Python Website  
+1. Official Python Website  
 https://docs.python.org/3/tutorial/modules.html  
 
-1. HBNB videos  
+2. HBNB videos  
 https://www.youtube.com/playlist?list=PLlLHfkTcnvmPOp6jv_89tRpJUMFrP-Wbi  
 
-2. Python Tips Website  
+3. Python Tips Website  
 https://pythontips.com/2013/08/04/args-and-kwargs-in-python-explained/  
 
-3. Python Sheets Website  
+4. Python Sheets Website  
 https://www.pythonsheets.com/notes/python-tests.html  
 
 ## Creators
@@ -215,3 +216,18 @@ Jennifer Tang: [Email](mailto:jennifer0tang@gmail.com), [Github](https://github.
 A budding Full-Stack Software Engineer living in Brooklyn, NY with interest in data science/management and experience in marketing analytics and pricing strategies.  Jennifer hopes to combine the analytical skills developed from ten years in Marketing with the technical programming skills gained to develop impactful applications and software.  Jennifer is the co-creator of [Pollen](https://github.com/jenntang1/pollen), an engaging and educational web application on forensic botany.  Forensic botany is a niche field of forensic science that uses plants or plant parts in investigating criminal cases.  It is not widely known to many, thus, its mission is to educate those who never heard of forensic botany and show its societal impact.  Additionally, it's a space for forensic botany enthusiasts to learn and discover cases they weren’t aware of.  When Jennifer is not on a computer, she likes to run outdoors, read the news, solve Sudoku, bake cookies and play with her nieces.  
 
 Flavio Vilchez Espinoza: [Email](mailto:flavio.vilchezespinoza@holbertonschool.com) and [Github](https://github.com/fvesp18)  
+
+## Contributing
+Please feel free to fork this repository and enhance Monty. The following are some guidelines to adhere by:
+
+* Keep README updated
+* Keep color and font style consistent
+* Keep descriptions/comments short and simple
+* New commands or improvements are welcome
+* Check spelling and grammar
+
+## Related Projects
+None
+
+## Licensing
+None
