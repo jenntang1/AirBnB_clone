@@ -188,14 +188,16 @@ git clone https://github.com/jenntang1/AirBnB_clone.git
 ```
 
 ## Usage
-The following illustrates the console in interactive mode.  In order to start the console, execute the console.py file on the command line.  Then, type in commands like create, show, destroy, update or all followed by the class name.  The quit, EOF and help commands doesn't need additional arguments on the command line.  The all command would display all class objects if no argument follows.  
+The following are instructions to use Hbnb.  
+
+1. The following illustrates the console in interactive mode.  In order to start the console, execute the console.py file on the command line.  Then, type in commands like create, show, destroy, update or all followed by the class name.  The quit, EOF and help commands doesn't need additional arguments on the command line.  The all command would display all class objects if no argument follows.  
 ![hbnb_interactive](https://i.imgur.com/JPUGd72.png)
 
 ![hbnb_quit](https://i.imgur.com/JxOJ7HF.png)
 
 ![hbnb_eof](https://i.imgur.com/L3v53mE.png)
 
-The following illustrates the console in non-interactive mode.  Additionally, it showcases the Create, Show, All, Destroy and Update commands.  
+2. The following illustrates the console in non-interactive mode.  Additionally, it showcases the Create, Show, All, Destroy and Update commands.  
 ![hbnb_non_interactive](https://i.imgur.com/rnXiN47.png)
 
 ## Resources
